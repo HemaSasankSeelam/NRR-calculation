@@ -7,6 +7,34 @@ if (sessionStorage.length === 0) {
 }
 
 window.onload = onPageLoad;
+document.querySelectorAll("#overs-select input").forEach((ele) => ele.addEventListener("click", onOverChange));
+
+function onOverChange(event) {
+
+    let oversValue = "0";
+    document.querySelectorAll("#overs-select input").forEach((ele) => {
+        if (ele.checked) {
+            oversValue = ele.value;
+        }
+    });
+    if (oversValue == 0)
+        return;
+
+    document.querySelectorAll("#each-row-team-1 input[id='overs']").forEach((ele) => {
+        if (["10", "20", "50"].includes(ele.value)) {
+            ele.value = oversValue;
+        }
+    })
+
+    document.querySelectorAll("#each-row-team-2 input[id='overs']").forEach((ele) => {
+        if (["10", "20", "50"].includes(ele.value))
+            ele.value = oversValue;
+    })
+
+
+}
+
+
 
 function onPageLoad() {
     console.log("page reloaded");
@@ -35,6 +63,23 @@ function onPageLoad() {
     document.querySelectorAll("#each-row-team-2 input[id='overs']").forEach((ele, i) => ele.value = team2Overs[i]);
 
 }
+function addForBoth() {
+    addMatchRow(1);
+    addMatchRow(2);
+}
+
+function deleteForBoth() {
+
+    if (Array.from(document.querySelectorAll("#each-row-team-1 input")).length > 2) {
+        ele = Array.from(document.querySelectorAll("#each-row-team-1 input")).pop()
+        removeMatchRow(ele.parentElement);
+    }
+
+    if (Array.from(document.querySelectorAll("#each-row-team-2 input")).length > 2) {
+        ele = Array.from(document.querySelectorAll("#each-row-team-2 input")).pop()
+        removeMatchRow(ele.parentElement);
+    }
+}
 
 let team1div = document.getElementById("runs-overs-inputs-team-1");
 let team2div = document.getElementById("runs-overs-inputs-team-2");
@@ -52,11 +97,18 @@ function addMatchRow(teamNo) {
     div.className = "each-row";
     div.id = `each-row-team-${teamNo}`;
 
+    let oversValue = 0;
+    document.querySelectorAll("#overs-select input").forEach((ele) => {
+        if (ele.checked)
+            oversValue = ele.value;
+    });
+
+
     div.innerHTML = `<label for="runs">Runs:</label>
                     <input type="number" name="runs" id="runs" value="0" required class="team-${teamNo}-runs" min="0">
 
                     <label for="overs">Overs:</label>
-                    <input type="number" name="overs" id="overs" value="0" step="0.1" required class="team-${teamNo}-overs" min="0">
+                    <input type="number" name="overs" id="overs" value="${oversValue}" step="0.1" required class="team-${teamNo}-overs" min="0">
                     <button onclick=removeMatchRow(this.parentElement) id='delete'>X</button>`;
     if (teamNo === 1)
         team1div.appendChild(div);
@@ -153,8 +205,12 @@ function calculate() {
         team2Runs = team2Runs.map((ele) => Number.parseFloat(ele));
         team2Overs = team2Overs.map((ele) => Number.parseFloat(ele));
 
-        team1Avg = getTheAvg(team1Runs, team1Overs);
-        team2Avg = getTheAvg(team2Runs, team2Overs);
+        [team1OverallRuns, team1OverallOvers] = getTheCumRunsOvers(team1Runs, team1Overs);
+        [team2OverallRuns, team2OverallOvers] = getTheCumRunsOvers(team2Runs, team2Overs);
+
+        team1Avg = team1OverallRuns / team1OverallOvers;
+        team2Avg = team2OverallRuns / team2OverallOvers;
+
 
         let nrr = Number.parseFloat((team1Avg - team2Avg).toFixed(3));
 
@@ -174,7 +230,7 @@ function calculate() {
 
 }
 
-function getTheAvg(teamRuns, teamOvers) {
+function getTheCumRunsOvers(teamRuns, teamOvers) {
     let runs = 0;
     let overs = 0;
 
@@ -192,7 +248,7 @@ function getTheAvg(teamRuns, teamOvers) {
 
     }
 
-    return runs / overs;
+    return [runs, overs];
 }
 
 function reset() {
