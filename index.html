@@ -15,6 +15,24 @@
     </header>
     <hr>
     <main>
+        <div class="container" id="overs-select">
+            <label>
+                <input type="radio" name="over-no" id="over-no" value="10">
+                10 overs
+            </label>
+            <label>
+                <input type="radio" name="over-no" id="over-no" value="20" checked>
+                20 overs
+            </label>
+            <label>
+                <input type="radio" name="over-no" id="over-no" value="50">
+                50 overs
+            </label>
+            <label>
+                <input type="radio" name="over-no" id="over-no" value="0">
+                other
+            </label>
+        </div>
         <div class="container">
             <div class="teams" id="team-1">
                 <h3>Team (Runs Scored & Overs Faced)</h3>
@@ -24,7 +42,7 @@
                         <input type="number" name="runs" id="runs" value="0" required class="team-1-runs" min="0">
 
                         <label for="overs">Overs:</label>
-                        <input type="number" name="overs" id="overs" value="0" step="0.1" required class="team-1-overs"
+                        <input type="number" name="overs" id="overs" value="20" step="0.1" required class="team-1-overs"
                             min="0">
                         <button style="visibility:hidden;">X</button>
                     </div>
@@ -40,7 +58,7 @@
                         <input type="number" name="runs" id="runs" value="0" required class="team-1-runs" min="0">
 
                         <label for="overs">Overs:</label>
-                        <input type="number" name="overs" id="overs" value="0" step="0.1" required class="team-1-overs"
+                        <input type="number" name="overs" id="overs" value="20" step="0.1" required class="team-1-overs"
                             min="0">
                         <button style="visibility:hidden;">X</button>
                     </div>
@@ -50,10 +68,19 @@
             </div>
 
         </div>
+        <div class="both">
+            <button id="add-for-both" onclick="addForBoth()">+ Add Match for Both</button>
+            <button id="delete-for-both" onclick="deleteForBoth()">- Delete Last Match from Both</button>
+        </div>
         <p id="note">** If the Team is All Out Enter the Total overs **
-            <br>** slightly Error for DLS **
+            <br>** For DLS use the revised runs/overs **
         </p>
-
+        <blockquote>
+            <a href="https://www.cricindeed.com/how-nrr-calculated-in-cricket#rain-image" target="_blank"
+                style="color: aquamarine;">
+                For More details
+            </a>
+        </blockquote>
     </main>
     <hr>
     <section>
