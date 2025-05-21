@@ -16,6 +16,10 @@ main {
     min-height: 50vh;
 }
 
+#overs-select {
+    margin-bottom: 5px;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -74,6 +78,7 @@ main {
 }
 
 .each-row button {
+    font-size: 0.8rem;
     position: relative;
     top: -5%;
     left: -1%;
@@ -89,7 +94,8 @@ main {
     box-shadow: 0 0 8px #00ff99;
 }
 
-.add-match {
+.add-match,
+.both button {
     margin: 10px auto;
     border-radius: 50px;
     font-size: 1.2rem;
@@ -99,8 +105,21 @@ main {
     width: 50%;
 }
 
-.add-match:hover {
+.both button {
+    width: 24%;
+}
+
+#delete-for-both {
     background: linear-gradient(100deg, rgb(192, 91, 91), #667eea);
+}
+
+.add-match:hover,
+.both button:hover {
+    background: linear-gradient(100deg, rgb(192, 91, 91), #667eea);
+}
+
+#delete-for-both:hover {
+    background: linear-gradient(100deg, #667eea, rgb(192, 91, 91))
 }
 
 #delete {
@@ -111,10 +130,14 @@ main {
     background-color: red;
 }
 
+.both {
+    margin-top: 10px;
+    text-align: center;
+}
+
 #note {
     padding: 0;
     width: 50%;
-    margin-top: 12%;
     margin-left: 50%;
     transform: translate(-50%, -50%);
 
