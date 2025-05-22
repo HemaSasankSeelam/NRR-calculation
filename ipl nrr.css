@@ -135,6 +135,31 @@ main {
     text-align: center;
 }
 
+aside {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+aside input,
+#calc-runs-overs,
+#max-overs {
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 50px;
+    text-align: center;
+    width: 250px;
+    background-color: rgba(233, 175, 175, 0.8);
+}
+
+#label-for-target {
+    position: relative;
+    left: 51%;
+    font-size: 1.2rem;
+}
+
+
 #note {
     padding: 0;
     width: 50%;
