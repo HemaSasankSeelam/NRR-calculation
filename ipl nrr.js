@@ -7,7 +7,50 @@ if (sessionStorage.length === 0) {
 }
 
 window.onload = onPageLoad;
+
 document.querySelectorAll("#overs-select input").forEach((ele) => ele.addEventListener("click", onOverChange));
+document.getElementById("RNRR").addEventListener("keyup", function (event) {
+    let ele = document.getElementById("RNRR");
+    if (event.key === "Enter" || event.key === "Shift")
+        return
+    if (!["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."].includes(event.key))
+        ele.value = String(ele.value).slice(0, String(ele.value).length - 1)
+});
+document.getElementById("target").addEventListener("keyup", function (event) {
+    let ele = document.getElementById("target");
+    if (event.key === "Enter" || event.key === "Shift")
+        return
+    if (!["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."].includes(event.key))
+        ele.value = String(ele.value).slice(0, String(ele.value).length - 1)
+});
+document.getElementById("max-overs").addEventListener("keyup", function (event) {
+    let ele = document.getElementById("max-overs");
+    if (event.key === "Enter" || event.key === "Shift")
+        return
+    if (!["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."].includes(event.key))
+        ele.value = String(ele.value).slice(0, String(ele.value).length - 1)
+});
+
+document.getElementById("target-checkbox").addEventListener("click", () => {
+    let ele = document.getElementById("target");
+    if (ele.disabled)
+        ele.disabled = false;
+    else
+        ele.disabled = true;
+})
+
+let team1div = document.getElementById("runs-overs-inputs-team-1");
+let team2div = document.getElementById("runs-overs-inputs-team-2");
+
+let output = document.getElementById("output");
+
+let team1Runs = [];
+let team1Overs = [];
+
+let team2Runs = [];
+let team2Overs = [];
+
+
 
 function onOverChange(event) {
 
@@ -34,16 +77,12 @@ function onOverChange(event) {
 
 }
 
-
-
 function onPageLoad() {
-    console.log("page reloaded");
-    console.log(sessionStorage);
-    let team1Runs = JSON.parse(sessionStorage.getItem("team1Runs"));
-    let team1Overs = JSON.parse(sessionStorage.getItem("team1Overs"));
+    team1Runs = JSON.parse(sessionStorage.getItem("team1Runs"));
+    team1Overs = JSON.parse(sessionStorage.getItem("team1Overs"));
 
-    let team2Runs = JSON.parse(sessionStorage.getItem("team2Runs"));
-    let team2Overs = JSON.parse(sessionStorage.getItem("team2Overs"));
+    team2Runs = JSON.parse(sessionStorage.getItem("team2Runs"));
+    team2Overs = JSON.parse(sessionStorage.getItem("team2Overs"));
 
     if (team1Runs.length === 0 || team2Runs.length === 0)
         return;
@@ -81,17 +120,6 @@ function deleteForBoth() {
     }
 }
 
-let team1div = document.getElementById("runs-overs-inputs-team-1");
-let team2div = document.getElementById("runs-overs-inputs-team-2");
-
-let output = document.getElementById("output");
-
-let team1Runs = [];
-let team1Overs = [];
-
-let team2Runs = [];
-let team2Overs = [];
-
 function addMatchRow(teamNo) {
     let div = document.createElement("div");
     div.className = "each-row";
@@ -122,7 +150,14 @@ function removeMatchRow(ele = null) {
 }
 
 function inputEventListen() {
+    let notWantIds = ["RNRR", "target", "max-overs"];
+
     Array.from(document.getElementsByTagName("input")).forEach(element => {
+
+        if (notWantIds.includes(element.id)) {
+            return;
+        }
+
         element.addEventListener("focusin", () => {
             if (element.value == 0)
                 element.value = "";
