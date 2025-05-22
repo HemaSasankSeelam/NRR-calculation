@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Net Run Rate Calculator</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
     <link rel="stylesheet" href="ipl nrr.css">
 </head>
 
@@ -83,6 +85,20 @@
         </blockquote>
     </main>
     <hr>
+    <p style="text-align: center;">For To Qualifiers</p>
+    <aside class="input-rnn">
+        <input type="text" id="RNRR" placeholder="Enter Required NRR To Qualify" title="Net Run Rate"
+            autocomplete="off">
+
+        <input type="text" name="target" id="target" disabled placeholder="Enter Target" autocomplete="off">
+
+    </aside>
+    <label id="label-for-target"><input type="checkbox" name="target-checkbox" id="target-checkbox">For chase</label>
+    <section>
+        <input type="text" id="max-overs" placeholder="Enter Max overs(10,20)" autocomplete="off">
+        <button py-click="on_click" id="calc-runs-overs">Cal Runs/Over To win</button>
+    </section>
+    <hr>
     <section>
         <button id="calculate-nrr" onclick="calculate()">calculate NRR</button>
         <button id="reset" onclick="reset()">Reset</button>
@@ -95,7 +111,9 @@
         <p>Made With Help of Chat-GPT</p>
     </footer>
 
-    <script src="ipl nrr.js"></script>
+
+    <script src="main.py" type="py" config="./py-script.json"></script>
+    <script src="./ipl nrr.js"></script>
 </body>
 
 </html>
