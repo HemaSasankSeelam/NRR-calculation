@@ -94,6 +94,11 @@ main {
     box-shadow: 0 0 8px #00ff99;
 }
 
+.both {
+    margin-top: 10px;
+    text-align: center;
+}
+
 .add-match,
 .both button {
     margin: 10px auto;
@@ -106,7 +111,7 @@ main {
 }
 
 .both button {
-    width: 24%;
+    width: 20rem;
 }
 
 #delete-for-both {
@@ -130,19 +135,15 @@ main {
     background-color: red;
 }
 
-.both {
-    margin-top: 10px;
-    text-align: center;
-}
 
-aside {
+section {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 1.2rem;
 }
 
-aside input,
+section input,
 #calc-runs-overs,
 #max-overs {
     font-size: 1.2rem;
@@ -155,6 +156,7 @@ aside input,
 
 #label-for-target {
     position: relative;
+    top: -100%;
     left: 51%;
     font-size: 1.2rem;
 }
@@ -205,8 +207,7 @@ section {
     flex-grow: 1fr 1fr;
     flex-wrap: wrap;
     gap: 1.2rem;
-    margin-top: 20px;
-    margin-bottom: 50px;
+    margin-top: 30px;
     justify-content: center;
     background: none;
     box-shadow: none;
@@ -250,6 +251,7 @@ section button {
         align-items: center;
     }
 
+
     .runs-overs-inputs {
         max-width: 100%;
     }
@@ -263,6 +265,11 @@ section button {
 
     #note {
         width: 80%;
+    }
+
+    #label-for-target {
+        position: relative;
+        left: 40%;
     }
 
     section {
