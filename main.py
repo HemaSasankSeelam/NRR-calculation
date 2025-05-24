@@ -97,7 +97,7 @@ def on_click(event):
 
         simplified_eq = sympy.simplify(eq)
 
-        final_ans = sympy.solve(simplified_eq.subs(y,0))[0]
+        final_ans = sympy.solve(simplified_eq.subs(y,1))[0]
 
         output_ele.innerText = f"Team Need to win with\n Approx: {round(final_ans)} Runs\n To get run rate of {req_run_rate}"
         output_ele.style.background = "rgba(20,255,20,0.5)"
