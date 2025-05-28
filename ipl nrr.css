@@ -1,0 +1,283 @@
+* {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    background: linear-gradient(100deg, #667eea, #764ba2);
+}
+
+header {
+    text-align: center;
+    font-size: 2rem;
+    color: whitesmoke;
+}
+
+main {
+    min-height: 50vh;
+}
+
+#overs-select {
+    margin-bottom: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    gap: 2rem;
+}
+
+.teams {
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 1.2rem;
+    border-radius: 12px;
+    box-shadow: 12px 10px 2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.teams h3 {
+    background: rgba(255, 255, 255, 0);
+    text-align: center;
+    border: none;
+}
+
+.runs-overs-inputs {
+    background: rgba(255, 255, 255, 0);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.each-row {
+    background: rgba(255, 255, 255, 0);
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    gap: 0.5rem;
+    margin-bottom: 5px;
+}
+
+.each-row label {
+    background: rgba(255, 255, 255, 0);
+}
+
+.each-row input {
+    height: 3vh;
+    border-radius: 50px;
+    text-align: center;
+    background: white;
+    width: 100%;
+}
+
+.each-row input:not(:valid) {
+    outline: 3px solid red;
+}
+
+.each-row button {
+    font-size: 0.8rem;
+    position: relative;
+    top: -5%;
+    left: -1%;
+    border-radius: 50%;
+    margin-right: 2px;
+    height: 3vh;
+    background: rgba(255, 0, 0, 0.5);
+    box-shadow: none;
+    color: white;
+}
+
+.each-row input:focus {
+    box-shadow: 0 0 8px #00ff99;
+}
+
+.both {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.add-match,
+.both button {
+    margin: 10px auto;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    box-shadow: none;
+    background: linear-gradient(100deg, #667eea, rgb(192, 91, 91));
+    transition: 'background' 0.5s ease-in;
+    width: 50%;
+}
+
+.both button {
+    width: 20rem;
+}
+
+#delete-for-both {
+    background: linear-gradient(100deg, rgb(192, 91, 91), #667eea);
+}
+
+.add-match:hover,
+.both button:hover {
+    background: linear-gradient(100deg, rgb(192, 91, 91), #667eea);
+}
+
+#delete-for-both:hover {
+    background: linear-gradient(100deg, #667eea, rgb(192, 91, 91))
+}
+
+#delete {
+    transition: background-color 0.5s ease-in;
+}
+
+#delete:hover {
+    background-color: red;
+}
+
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.2rem;
+}
+
+section input,
+#calc-runs-overs,
+#max-overs {
+    font-size: 1.2rem;
+    padding: 5px;
+    border-radius: 50px;
+    text-align: center;
+    width: 250px;
+    background-color: rgba(233, 175, 175, 0.8);
+}
+
+#label-for-target {
+    position: relative;
+    top: -100%;
+    left: 51%;
+    font-size: 1.2rem;
+}
+
+
+#note {
+    padding: 0;
+    width: 50%;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    color: yellowgreen;
+    font-size: 1.4rem;
+    font-weight: 600;
+    background: linear-gradient(to right, rgb(76, 76, 200), rgb(189, 84, 84));
+    box-shadow: 12px 10px 2px rgba(0, 0, 0, 0.25);
+
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: scroll-text 8s ease-in-out infinite alternate;
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(0%);
+    }
+
+    25% {
+        transform: translateX(-50%);
+    }
+
+    50% {
+        transform: translateX(-100%);
+    }
+
+    75% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1fr 1fr;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin-top: 30px;
+    justify-content: center;
+    background: none;
+    box-shadow: none;
+}
+
+section button {
+    font-size: 1.4rem;
+    padding: 5px;
+    width: 15vw;
+    border-radius: 20px;
+    text-align: center;
+}
+
+#calculate-nrr {
+    background: linear-gradient(100deg, rgba(227, 103, 115, 0.8), rgba(244, 74, 91, 0.6), rgba(218, 9, 30, 0.4));
+    transition: "background" 0.5s ease-in-out;
+}
+
+#calculate-nrr:hover {
+    background: linear-gradient(100deg, rgba(218, 9, 30, 0.8), rgba(244, 74, 91, 0.6), rgba(227, 103, 115, 0.4));
+}
+
+#reset {
+    color: rgb(216, 29, 29);
+    color: rgb(67, 15, 15);
+    background: linear-gradient(90deg, rgba(223, 21, 21, 0.8), rgb(161, 63, 63), rgb(190, 68, 0, 0.5));
+    transition: "background" 0.5s ease-in-out;
+}
+
+#reset:hover {
+    background: linear-gradient(90deg, rgba(237, 124, 83, 1), rgba(199, 87, 87, 1), rgba(155, 42, 42, 1));
+}
+
+#output {
+    border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .runs-overs-inputs {
+        max-width: 100%;
+    }
+
+    .each-row button {
+        top: -0.2vh;
+        left: -1vw;
+        border-radius: 50%;
+        margin-right: 2px;
+    }
+
+    #note {
+        width: 80%;
+    }
+
+    #label-for-target {
+        position: relative;
+        left: 40%;
+    }
+
+    section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section button {
+        width: 80%;
+    }
+}
